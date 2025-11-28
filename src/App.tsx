@@ -1,8 +1,6 @@
-import { useState, useEffect } from 'react';
-import { JsonNode } from './components/JsonNode';
-import { NativeEditor } from './components/NativeEditor';
-import { Code2, AlertCircle, Copy, Trash2, Wand2 } from 'lucide-react';
 import JSON5 from 'json5';
+import { useEffect, useState } from 'react';
+import { NativeEditor } from './components/NativeEditor';
 
 function App() {
   const [input, setInput] = useState('');
