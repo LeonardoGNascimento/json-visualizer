@@ -57,13 +57,22 @@ export const NativeEditor = () => {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (!(event.target as Element).closest('.custom-dropdown')) {
+      const target = event.target as Element;
+      
+      // Close dropdowns
+      if (!target.closest('.custom-dropdown')) {
         setOpenDropdown(null);
+      }
+      
+      // Close Find/Replace modal
+      // Ignore clicks inside the modal itself or on the toggle button (to prevent conflict with onClick)
+      if (showFindReplace && !target.closest('.find-replace-modal') && !target.closest('[title="Find and Replace"]')) {
+        setShowFindReplace(false);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
+  }, [showFindReplace]);
 
   useEffect(() => {
     if (editorRef.current) {
@@ -457,7 +466,6 @@ export const NativeEditor = () => {
       style={{
         border: "1px solid var(--border-color)",
         borderRadius: "0.5rem",
-        overflow: "hidden",
         display: "flex",
         flexDirection: "column",
         height: "100%",
@@ -995,8 +1003,8 @@ export const NativeEditor = () => {
 
       {showFindReplace && (
         <div className="find-replace-modal" style={{
-          position: 'absolute',
-          top: '50px',
+          position: 'fixed',
+          top: '20px',
           right: '20px',
           width: '320px',
           backgroundColor: 'white',
