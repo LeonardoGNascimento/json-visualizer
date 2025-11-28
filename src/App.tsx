@@ -1,46 +1,7 @@
-import JSON5 from 'json5';
-import { useEffect, useState } from 'react';
 import { NativeEditor } from './components/NativeEditor';
 
 function App() {
-  const [input, setInput] = useState('');
-  const [parsedJson, setParsedJson] = useState<any>(null);
-  const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    if (!input.trim()) {
-      setParsedJson(null);
-      setError(null);
-      return;
-    }
-
-    try {
-      const parsed = JSON5.parse(input);
-      setParsedJson(parsed);
-      setError(null);
-    } catch (err) {
-      setError((err as Error).message);
-      setParsedJson(null);
-    }
-  }, [input]);
-
-  const handleFormat = () => {
-    if (parsedJson) {
-      setInput(JSON.stringify(parsedJson, null, 2));
-    }
-  };
-
-  const handleClear = () => {
-    setInput('');
-    setParsedJson(null);
-    setError(null);
-  };
-
-  const handleCopy = () => {
-    if (input) {
-      navigator.clipboard.writeText(input);
-    }
-  };
 
   return (
     <div className="container">
