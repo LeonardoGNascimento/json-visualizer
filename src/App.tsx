@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { JsonNode } from './components/JsonNode';
+import { NativeEditor } from './components/NativeEditor';
 import { Code2, AlertCircle, Copy, Trash2, Wand2 } from 'lucide-react';
 import JSON5 from 'json5';
 
@@ -115,6 +116,20 @@ function App() {
           </div>
         </div>
       </main>
+
+      <div className="container" style={{ marginTop: '2rem', paddingBottom: '2rem' }}>
+        <div className="panel" style={{ height: '500px' }}>
+          <div className="panel-header">
+            <div className="panel-title">
+              <Code2 size={20} className="text-accent" style={{ color: 'var(--accent-color)' }} />
+              <span>Native Text Editor (Test)</span>
+            </div>
+          </div>
+          <div className="editor-container" style={{ height: 'calc(100% - 60px)', padding: '1rem' }}>
+            <NativeEditor />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
