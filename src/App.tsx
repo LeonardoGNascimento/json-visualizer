@@ -46,7 +46,7 @@ function App() {
 
   return (
     <div className="container">
-      <header className="header">
+      {/* <header className="header">
         <h1 className="title">JSON & JS Object Visualizer</h1>
         <p className="subtitle">Beautiful, interactive viewer for JSON and JavaScript objects</p>
       </header>
@@ -115,21 +115,14 @@ function App() {
             )}
           </div>
         </div>
-      </main>
+      </main> */}
 
-      <div className="container" style={{ marginTop: '2rem', paddingBottom: '2rem' }}>
-        <div className="panel" style={{ height: '500px' }}>
-          <div className="panel-header">
-            <div className="panel-title">
-              <Code2 size={20} className="text-accent" style={{ color: 'var(--accent-color)' }} />
-              <span>Native Text Editor (Test)</span>
-            </div>
-          </div>
-          <div className="editor-container" style={{ height: 'calc(100% - 60px)', padding: '1rem' }}>
+     
+          
             <NativeEditor />
-          </div>
-        </div>
-      </div>
+       
+        
+     
     </div>
   );
 }
